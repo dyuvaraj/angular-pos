@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-billedit',
@@ -11,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class BilleditComponent implements OnChanges {
 
   @Input() vieworder: any;
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router, private toastr: ToastrService) { }
   
   salesData:any = [];
   SaleList:any = [];
@@ -136,8 +137,10 @@ export class BilleditComponent implements OnChanges {
     this._auth.billUpdate((BillingForm.value), this.OrderID)
     .subscribe(
       res => {console.log(res)
+        this.toastr.success("Sales Order Updated Successfully", "Success");
       },
-      err => {console.log(err)       
+      err => {console.log(err)  
+        this.toastr.error("Some fields are missing", "Error");     
       },
     );
     

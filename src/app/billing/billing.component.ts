@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class BillingComponent implements OnInit {
   TotalAmount:any = 0;
   customer_name:any;
 
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this._auth.billing().products.subscribe(
@@ -103,8 +104,10 @@ export class BillingComponent implements OnInit {
     this._auth.billSave((BillingForm.value))
     .subscribe(
       res => {console.log(res)
+        this.toastr.success("Sales Order Created Successfully", "Success");
       },
       err => {console.log(err)       
+        this.toastr.error("Some fields are missing", "Error");     
       },
     );
     

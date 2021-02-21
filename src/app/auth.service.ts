@@ -33,12 +33,6 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  logoutUser(){
-    this.isLoggedIn = false;
-    localStorage.removeItem('token');
-    this._router.navigate(['login']);
-  }
-
   loginUser(user: any){
     this.isLoggedIn = true;
     return this.http.post<any>(this._login, user);

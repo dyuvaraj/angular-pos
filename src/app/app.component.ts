@@ -15,4 +15,14 @@ export class AppComponent {
   constructor(private _auth: AuthService, private _router: Router) { }
 
   isLoggedIn = this._auth.isLoggedIn;
+
+  logoutUser(){
+    this._auth.isLoggedIn = false;
+    localStorage.removeItem('token');
+    this._router.navigate(['login']);
+  }
 }
+
+
+
+

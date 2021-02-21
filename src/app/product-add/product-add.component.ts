@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-product-add',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProductAddComponent implements OnInit {
 
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router, private toastr: ToastrService) { }
 
   @Output() onProductAdd = new EventEmitter<any>();
 
@@ -23,10 +25,13 @@ export class ProductAddComponent implements OnInit {
     .subscribe(
       res => {console.log(res)
         this.onProductAdd.emit();
+        this.toastr.success("Product added Successfully", "Success");
+
       },
       err => {
         this.errorData.push(err.error)  
         console.log(this.errorData[0]) ;
+        this.toastr.error("Some fields are missing", "Error");
       },
     );
   }

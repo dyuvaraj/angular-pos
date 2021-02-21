@@ -4,6 +4,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { BillingComponent } from './billing/billing.component';
 import { BilleditComponent } from './billedit/billedit.component';
 import { BillviewComponent } from './billview/billview.component';
 import { ReportComponent } from './report/report.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,12 @@ import { ReportComponent } from './report/report.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
