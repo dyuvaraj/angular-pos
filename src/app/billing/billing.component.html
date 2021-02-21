@@ -1,0 +1,95 @@
+<div class="row">
+
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <label>Customer Name</label>
+        <input name="customer_name" [(ngModel)] = "customer_name" type="text" class="form-control" placeholder="Customer Name" >
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Products List</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>Product Name</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of productData; let i = index">
+      
+                      <td>{{product.product_name}}</td>
+                      <td>
+                          <button class="btn btn-success" (click)="AddRemoveToBill(product, 'add')" type="button">+</button>&nbsp;&nbsp;
+                          <button class="btn btn-danger" (click)="AddRemoveToBill(product, 'remove')" type="button">-</button>
+                      </td>
+      
+                    </tr>                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+
+        <br/>
+
+
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title"> Billing</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class=" text-primary">
+                          <th>Product Name</th>
+                          <th>Quantity</th>
+                          <th class="text-right">Price</th>
+                          <th class="text-right">Amount</th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let productlist of SaleList;">
+      
+                            <td>{{productlist.product}}</td>
+                            <td>{{productlist.quantity}}</td>
+                            <td class="text-right">{{productlist.price}}</td>
+                            <td class="text-right">{{productlist.amt}}</td>
+      
+                          </tr>                   
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="card-header">
+                    <h4 class="card-title"> Total - {{TotalAmount}}</h4>
+                  </div>
+                </div>
+
+
+    </div>
+
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <button (click)="saveBill()" *ngIf="TotalAmount" class="btn btn-primary btn-lg">Save Bill</button>
+    </div>
+</div>
+
+
+
+
+
+

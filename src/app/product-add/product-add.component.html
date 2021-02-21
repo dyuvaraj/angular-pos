@@ -1,0 +1,50 @@
+
+<p *ngFor="let error of errorData; let i = index" class="text-danger">{{error}}</p>
+
+<div class="card card-user">
+    <div class="card-header">
+      <h5 class="card-title">Add Product</h5>
+    </div>
+    <div class="card-body">
+      <form  name="productAddForm" #productAddForm="ngForm" > 
+        <div class="container">
+          
+          <div class="col-md-12 px-1">
+            <div class="form-group">
+              <label>Product Name</label>
+              <input name="product_name" [(ngModel)] = "productData.product_name" type="text" class="form-control" placeholder="Product Name" >
+            </div>
+          </div>
+
+          <div class="col-md-12 px-1">
+            <div class="form-group">
+              <label>Product Code</label>
+              <input name="product_code"  [(ngModel)] = "productData.product_code" type="text" class="form-control" placeholder="Product Code" >
+            </div>
+          </div>
+
+          <div class="col-md-12 px-1">
+            <div class="form-group">
+              <label>Cost</label>
+              <input name="product_cost"  [(ngModel)] = "productData.product_cost" type="text" class="form-control" placeholder="Cost" >
+            </div>
+          </div>
+
+          <div class="col-md-12 px-1">
+            <div class="form-group">
+              <label>Sell Price</label>
+              <input name="product_sell_price"  [(ngModel)] = "productData.product_sell_price" type="text" class="form-control" placeholder="Sell Price" >
+            </div>
+          </div>
+
+          <div class="col-md-6 px-1">
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <button type="submit" (click)="productAdd(); productAddForm.reset()" class="form-control btn btn-primary btn-round">Add Product</button>
+            </div>
+          </div>
+          
+        </div>   
+      </form>
+    </div>
+  </div>

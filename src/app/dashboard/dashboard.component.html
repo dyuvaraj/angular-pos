@@ -1,0 +1,97 @@
+
+<div class="row">
+
+
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-globe text-warning"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Sales</p>
+              <p class="card-title">{{profitData.total_sales_order}}</p><p>
+            </p></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i>
+          Total Sales Orders
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+      <br/>
+
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="row">
+              <div class="col-5 col-md-4">
+                <div class="icon-big text-center icon-warning">
+                  <i class="nc-icon nc-money-coins text-success"></i>
+                </div>
+              </div>
+              <div class="col-7 col-md-8">
+                <div class="numbers">
+                  <p class="card-category">Revenue</p>
+                  <p class="card-title">₹ {{profitData.total_profit}}</p><p>
+                </p></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer ">
+            <hr>
+            <div class="stats">
+              <i class="fa fa-calendar-o"></i>
+              Total Profit
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <br/>
+
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="row">
+              <div class="col-5 col-md-4">
+                <div class="icon-big text-center icon-warning">
+                  <i class="nc-icon nc-chart-pie-36 text-primary"></i>
+                </div>
+              </div>
+              <div class="col-7 col-md-8">
+                
+                  <p class="card-category">Profit by produts</p>
+                  <div *ngFor="let product of profitData.total_product_sold; let i = index">
+                        <p>{{product.product_name}} (Qty - {{product.qty}}) - ₹ {{product.profit_sale}}</p>
+                    </div>
+                    
+              </div>
+            </div>
+          </div>
+          <div class="card-footer ">
+            <hr>
+            <div class="stats">
+              <i class="fa fa-refresh"></i>
+              Product Sale Stats
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+</div>
